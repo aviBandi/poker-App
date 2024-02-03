@@ -1,11 +1,9 @@
-hand = ['2H', '3H']
-community = ['KH', '10C', '4H', 'AH', '6S']
+hand = ['10H', 'JH']
+community = ['KH', '5H', '9H', 'QH', 'AH']
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
     return values[card[:-1]]
-
-
 # sort the list in numerical order and make all face cards into a numerical value
 def cleanData():
     global all_cards
@@ -14,20 +12,21 @@ def cleanData():
     for i, each in enumerate(all_cards):
         if each[0] in ['J', 'Q', 'K', 'A']:
             all_cards[i] = str(map_card_value(each)) + each[1]
-    print(all_cards)
 
-    
 cleanData()
+print(all_cards)
+def check_straight_flush():
+    for i in range(len(all_cards) - 4):
+        # Checks for a straight
+        print(all_cards[i][:-1], all_cards[i + 4][:-1])
+        if int(all_cards[i][:-1])+4 == int(all_cards[i+4][:-1]):
+            if all_cards[i][-1] == all_cards[i+1][-1] == all_cards[i+2][-1] == all_cards[i+3][-1] == all_cards[i+4][-1]:
+                return True
+    return False
 
 
-# print(map_card_value('AH'))
+print(check_straight_flush())
 
-# def check_straight_flush(hand, community):
-#     all_cards = hand + community
-#     all_cards.sort(key=lambda x: map_card_value(x))
-#     print(all_cards)
-#
-# check_straight_flush(hand,community)
 
 
 
