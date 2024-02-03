@@ -1,3 +1,5 @@
+
+# Need to use a string method first to have a string of the card value and suit. Then need to do a card[:1] to get the first digit letter
 def map_card_value(value):
     if value.isdigit():
         return int(value)
@@ -13,7 +15,6 @@ def map_card_value(value):
         raise ValueError("Invalid card value")
 
 
-
 # def check_straight_flush(hand, community):
 #     all_cards = hand + community
 #     all_cards.sort(key=lambda x: map_card_value(x[0]))
@@ -27,6 +28,8 @@ def map_card_value(value):
 #             if straight_flush:
 #                 return True
 #     return False
+
+
 #
 # def check_four_of_a_kind(hand, community):
 #     all_cards = hand + community
