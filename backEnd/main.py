@@ -1,5 +1,5 @@
-hand = ["5C", "6S"]
-community = ["5S", "10D", "2S", "9H", "5D"]
+hand = ["7S", "6S"]
+community = ["5S", "5D", "5H", "2D", "5C"]
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -17,30 +17,36 @@ cleanData()
 print("-------------------")
 print(all_cards)
 print("-------------------")
-# Straight Flush Done
-def check_straight_flush():
-    for i in range(len(all_cards)-4):
-        # Checks for a straight
-        if int(all_cards[i][:-1])+4 == int(all_cards[i+4][:-1]):
-            # Checks for flush in the cards with straight
-            if all_cards[i][-1] == all_cards[i+1][-1] == all_cards[i+2][-1] == all_cards[i+3][-1] == all_cards[i+4][-1]:
-                return True
-    return False
+# # Straight Flush NOT Done need to map the index of the straight values to the cards
+# def check_straight_flush():
+#     myNums = [int(x[:-1]) for x in all_cards]
+#     for i in range(len(all_cards)-4):
+#         # Checks for a straight
+#         if int(all_cards[i][:-1])+1 in myNums and int(all_cards[i][:-1])+2 in myNums and int(all_cards[i][:-1])+3 in myNums and int(all_cards[i][:-1])+4 in myNums:
+#             # Checks for flush in the cards with straight
+#             if all_cards[i][-1] == all_cards[i+1][-1] == all_cards[i+2][-1] == all_cards[i+3][-1] == all_cards[i+4][-1]:
+#                 return True
+#     return False
 
 # THIS 100 PERCENT WORKS
 def check_flush():
     suits = [card[-1] for card in all_cards]
 
     for i in range(len(suits)-4):
-        if suits.count(suits[i]) == 5:
+        if suits.count(suits[i]) >= 5:
             return True
     else:
         return False
 
 # Straight is done
 def check_straight():
+    # for i in range(len(all_cards)-4):
+    #     if int(all_cards[i][:-1])+4 == int(all_cards[i+4][:-1]):
+    #         return True
+    # return False
+    myNums = [int(x[:-1]) for x in all_cards]
     for i in range(len(all_cards)-4):
-        if int(all_cards[i][:-1])+4 == int(all_cards[i+4][:-1]):
+        if int(all_cards[i][:-1])+1 in myNums and int(all_cards[i][:-1])+2 in myNums and int(all_cards[i][:-1])+3 in myNums and int(all_cards[i][:-1])+4 in myNums:
             return True
     return False
 # Four of a kind done
@@ -100,22 +106,23 @@ def check_full_house():
     return False
 
 def compute_hand():
-    if check_straight_flush():
-        return 9
+    # if check_straight_flush():
+    #     return 9
     if four_of_a_kind():
         return 8
-    if check_full_house():
+    elif check_full_house():
         return 7
-    if check_flush():
+    elif check_flush():
         return 6
-    if check_straight():
+    elif check_straight():
         return 5
-    if three_of_a_kind():
+    elif three_of_a_kind():
         return 4
-    if check_two_pair():
+    elif check_two_pair():
         return 3
-    if check_pair():
+    elif check_pair():
         return 2
+    # NEED TO FIGURE OUT A WAY TO IMPLEMENT THIS WITH HIGH CARD LATER.
     return 1
 
 
