@@ -1,4 +1,4 @@
-hand = ["2S", "4S"]
+hand = ["4C", "7S"]
 community = ["5S", "10D", "3S", "10H", "6S"]
 
 def map_card_value(card):
@@ -61,9 +61,33 @@ def three_of_a_kind():
         if numList.count(numList[i]) == 3:
             return True
     return False
-
 # High card works now
 def high_card():
     cardNums = [int(x[:-1]) for x in all_cards]
     return max(cardNums)
 
+# Accounts for pear but not multiple pair in one hand
+def check_pair():
+    numList = [int(x[:-1]) for x in all_cards]
+    # possiblePairs = set()
+    print(numList)
+    for i in range(len(numList)-1):
+        if numList.count(numList[i]) == 2:
+            # possiblePairs.add(numList[i])
+            return True
+    # if len(possiblePairs) != 0:
+    #     return (True, max(possiblePairs))
+    return False
+# Check Two pair function now works
+def check_two_pair():
+    numList = [int(x[:-1]) for x in all_cards]
+    print(numList)
+    possiblePairs = set()
+    for i in range(len(numList)-1):
+        if numList.count(numList[i]) == 2:
+            possiblePairs.add(numList[i])
+    if len(possiblePairs) == 2:
+        return True
+    return False
+
+print(check_two_pair())
