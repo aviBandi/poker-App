@@ -1,5 +1,5 @@
-hand = ["4C", "7S"]
-community = ["5S", "10D", "3S", "10H", "6S"]
+hand = ["5C", "7S"]
+community = ["5S", "10D", "2S", "10H", "5D"]
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -90,4 +90,21 @@ def check_two_pair():
         return True
     return False
 
-print(check_two_pair())
+# I think it works now
+def check_full_house():
+    numList = [int(x[:-1]) for x in all_cards]
+    print(numList)
+    possiblePairs = set()
+    for i in range(len(numList)-1):
+        print(numList[i], end=" ")
+        if numList.count(numList[i]) == 3:
+            possiblePairs.add(numList[i])
+        if numList.count(numList[i]) == 2:
+            possiblePairs.add(numList[i])
+    print(possiblePairs)
+    if len(possiblePairs) == 2:
+        return True
+    return False
+
+
+print(check_full_house())
