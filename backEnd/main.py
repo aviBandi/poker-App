@@ -1,5 +1,5 @@
-hand = ["2S", "AS"]
-community = ["5S", "AD", "3S", "AH", "6S"]
+hand = ["2S", "4S"]
+community = ["5S", "10D", "3S", "10H", "6S"]
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -61,3 +61,9 @@ def three_of_a_kind():
         if numList.count(numList[i]) == 3:
             return True
     return False
+
+# High card works now
+def high_card():
+    cardNums = [int(x[:-1]) for x in all_cards]
+    return max(cardNums)
+
