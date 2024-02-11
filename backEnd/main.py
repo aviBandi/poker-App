@@ -1,5 +1,5 @@
-hand = ["5C", "7S"]
-community = ["5S", "10D", "2S", "10H", "5D"]
+hand = ["5C", "6S"]
+community = ["5S", "10D", "2S", "9H", "5D"]
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
@@ -14,12 +14,13 @@ def cleanData():
             all_cards[i] = str(map_card_value(each)) + each[1]
 
 cleanData()
+print("-------------------")
 print(all_cards)
+print("-------------------")
 # Straight Flush Done
 def check_straight_flush():
     for i in range(len(all_cards)-4):
         # Checks for a straight
-        print(all_cards[i][:-1], all_cards[i + 4][:-1])
         if int(all_cards[i][:-1])+4 == int(all_cards[i+4][:-1]):
             # Checks for flush in the cards with straight
             if all_cards[i][-1] == all_cards[i+1][-1] == all_cards[i+2][-1] == all_cards[i+3][-1] == all_cards[i+4][-1]:
@@ -31,7 +32,6 @@ def check_flush():
     suits = [card[-1] for card in all_cards]
 
     for i in range(len(suits)-4):
-        print(suits[i], end=" ")
         if suits.count(suits[i]) == 5:
             return True
     else:
@@ -46,7 +46,6 @@ def check_straight():
 # Four of a kind done
 def four_of_a_kind():
     numList = [int(x[:-1]) for x in all_cards]
-    print(numList)
     for i in range(len(numList)-2):
         if numList.count(numList[i]) == 4:
             return True
@@ -56,7 +55,6 @@ def four_of_a_kind():
 # Three of a kind done
 def three_of_a_kind():
     numList = [int(x[:-1]) for x in all_cards]
-    print(numList)
     for i in range(len(numList)-2):
         if numList.count(numList[i]) == 3:
             return True
@@ -70,7 +68,6 @@ def high_card():
 def check_pair():
     numList = [int(x[:-1]) for x in all_cards]
     # possiblePairs = set()
-    print(numList)
     for i in range(len(numList)-1):
         if numList.count(numList[i]) == 2:
             # possiblePairs.add(numList[i])
@@ -81,7 +78,6 @@ def check_pair():
 # Check Two pair function now works
 def check_two_pair():
     numList = [int(x[:-1]) for x in all_cards]
-    print(numList)
     possiblePairs = set()
     for i in range(len(numList)-1):
         if numList.count(numList[i]) == 2:
@@ -93,18 +89,34 @@ def check_two_pair():
 # I think it works now
 def check_full_house():
     numList = [int(x[:-1]) for x in all_cards]
-    print(numList)
     possiblePairs = set()
     for i in range(len(numList)-1):
-        print(numList[i], end=" ")
         if numList.count(numList[i]) == 3:
             possiblePairs.add(numList[i])
         if numList.count(numList[i]) == 2:
             possiblePairs.add(numList[i])
-    print(possiblePairs)
     if len(possiblePairs) == 2:
         return True
     return False
 
+def compute_hand():
+    if check_straight_flush():
+        return 9
+    if four_of_a_kind():
+        return 8
+    if check_full_house():
+        return 7
+    if check_flush():
+        return 6
+    if check_straight():
+        return 5
+    if three_of_a_kind():
+        return 4
+    if check_two_pair():
+        return 3
+    if check_pair():
+        return 2
+    return 1
 
-print(check_full_house())
+
+print(compute_hand())
