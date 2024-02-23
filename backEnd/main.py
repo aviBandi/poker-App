@@ -10,7 +10,7 @@ community = ['2H', '10D', '10H', '6S', '7D']
 #     community = river
 #     print("hand: ", hand)
 #     print("community: ", community)
-
+# testing lo
 class Computation:
     def __init__(self, river, hand):
         self.river = river
