@@ -1,5 +1,19 @@
-hand = ["7S", "6S"]
-community = ["5S", "5D", "5H", "2D", "5C"]
+# hand = ["7S", "6S"]
+# community = ["5S", "5D", "5H", "2D", "5C"]
+hand = []
+community = []
+
+def getLists(river,playerHand):
+    global hand
+    global community
+    hand = playerHand
+    community = river
+    print("hand: ", hand)
+    print("community: ", community)
+
+
+
+
 
 def map_card_value(card):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
