@@ -118,7 +118,7 @@ class Computation:
 
 
 
-
-object1 = Computation(hand, community)
-object1.cleanData()
-print(object1.compute_hand())
+if __name__ == "__main__":
+    object1 = Computation(hand, community)
+    object1.cleanData()
+    print(object1.compute_hand())

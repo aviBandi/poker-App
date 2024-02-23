@@ -1,6 +1,5 @@
 import detectIMGOnly
-import main
-
+import computationClass
 river_image = "river.jpg"
 hand_image = "hand.jpg"
 
@@ -10,5 +9,6 @@ detectIMGOnly.cardsFromImage(river_image)
 print("hand cards")
 detectIMGOnly.cardsFromImage(hand_image)
 
-# main.getLists(detectIMGOnly.cardsFromImage(river_image), detectIMGOnly.cardsFromImage(hand_image))
-# print(main.compute_hand())
+computation = computationClass.Computation()
+computation.cleanData()
+print(computation.compute_hand())
