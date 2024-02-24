@@ -2,7 +2,7 @@ from multiprocessing import freeze_support
 
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+model = YOLO("backEnd/yolov8n.pt")
 
 if __name__ == '__main__':
     # freeze_support()
