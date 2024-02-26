@@ -1,7 +1,6 @@
 hand = ['6C', '9H']
 community = ['2H', '10D', '10H', '6S', '7D']
 
-
 class Computation:
     def __init__(self, hand, river):
         self.hand = hand
@@ -54,13 +53,22 @@ class Computation:
         return False
 
     def check_full_house(self):
+        print("checking full house")
         numList = [int(x[:-1]) for x in self.all_cards]
         possiblePairs = set()
         for i in range(len(numList) - 1):
             if numList.count(numList[i]) == 3:
                 possiblePairs.add(numList[i])
-            if numList.count(numList[i]) == 2:
-                possiblePairs.add(numList[i])
+                print("3 of a kind is ", numList[i])
+                numList = [x for x in numList if i != numList[i]]
+                print("numList is ", numList)
+            elif numList.count(numList[i]) == 2:
+                if numList[i] not in possiblePairs:
+                    possiblePairs.add(numList[i])
+                    print("2 of a kind is ", numList[i])
+                    numList = [x for x in numList if i != numList[i]]
+                    print("numList is ", numList)
+        print("possible pairs are ", possiblePairs)
         if len(possiblePairs) == 2:
             return True
         return False
