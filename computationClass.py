@@ -53,43 +53,18 @@ class Computation:
         return False
 
     def check_full_house(self):
-        print("checking full house")
         three_of_a_kind = False
         two_of_a_kind = False
         numList = [int(x[:-1]) for x in self.all_cards]
         uniqueNumList = list(set(numList))
-
         for i in range(len(uniqueNumList)):
             if numList.count(uniqueNumList[i]) == 3:
                 three_of_a_kind = True
-                print("three of a kind is", uniqueNumList[i])
             if numList.count(uniqueNumList[i]) == 2:
                 two_of_a_kind = True
-                print("two of a kind is", uniqueNumList[i])
         if three_of_a_kind == True and two_of_a_kind == True:
             return True
         return False
-
-
-        # numList = [int(x[:-1]) for x in self.all_cards]
-        # possiblePairs = set()
-        # for i in range(len(numList) - 1):
-        #     if numList.count(numList[i]) == 3:
-        #         possiblePairs.add(numList[i])
-        #         print("3 of a kind is ", numList[i])
-        #         numList = [x for x in numList if x != numList[i]]
-        #         print("numList is ", numList)
-        #     elif numList.count(numList[i]) == 2:
-        #         if numList[i] not in possiblePairs:
-        #             possiblePairs.add(numList[i])
-        #             print("2 of a kind is ", numList[i])
-        #             numList = [x for x in numList if x != numList[i]]
-        #             print("numList is ", numList)
-        # print("possible pairs are ", possiblePairs)
-        # if len(possiblePairs) == 2:
-        #     return True
-        # return False
-
 
     def four_of_a_kind(self):
         numList = [int(x[:-1]) for x in self.all_cards]

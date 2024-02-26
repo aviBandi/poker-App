@@ -19,7 +19,7 @@ model = YOLO("playingCards.pt")
 
 def cardsFromImage(imageSource):
     hand = []
-    results = model(imageSource, show=True)
+    results = model(imageSource, show=False)
     for r in results:
         boxes = r.boxes
         for box in boxes:
