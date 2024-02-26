@@ -1,6 +1,3 @@
-hand = ['6C', '9H']
-community = ['2H', '10D', '10H', '6S', '7D']
-
 class Computation:
     def __init__(self, hand, river):
         self.hand = hand
@@ -111,14 +108,13 @@ class Computation:
             return 3
         elif self.check_pair():
             return 2
-        # NEED TO FIGURE OUT A WAY TO IMPLEMENT THIS WITH HIGH CARD LATER.
         return 1
 
 
 
-
-
 if __name__ == "__main__":
+    hand = ['6C', '9H']
+    community = ['2H', '10D', '10H', '6S', '7D']
     object1 = Computation(hand, community)
     object1.cleanData()
     print(object1.compute_hand())
