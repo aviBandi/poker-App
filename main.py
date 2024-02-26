@@ -13,6 +13,15 @@ def computeWinner(player1, player2):
         print("Tie")
         print("Both players have a", handNames[player1.compute_hand()])
 
+    if player1.compute_hand() == 1 and player2.compute_hand() == 1:
+        if player1.high_card() > player2.high_card():
+            print("Player 1 wins with a a high card of", player1.high_card(), "over Player 2 with a high card of", player2.high_card())
+        elif player2.high_card() > player1.high_card():
+            print("Player 2 wins with a high card of", player2.high_card(), "over Player 1 with a high card of", player1.high_card())
+        else:
+            print("PLayer 1 and Player 2 tie with a high card of", player2.high_card())
+        
+
 river_image = "river.jpg"
 hand1_image = "hand1.jpg"
 hand2_image = "hand2.jpg"
