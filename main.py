@@ -40,6 +40,12 @@ def computeWinner(*players):
             else:
                 print(winners[i], end=", ")
         print("with a", handNames[highestHand])
+    # Check for high card
+    if highestHand == 1:
+        # NEED TO ADD THIS FUNCTIONALITY OF HIGH CARD
+        # DO SIMILAR TO PREVIOUS
+        pass
+
 
 
 
