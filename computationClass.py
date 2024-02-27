@@ -1,8 +1,9 @@
 class Computation:
-    def __init__(self, hand, river):
+    def __init__(self, hand, river, player_number):
         self.hand = hand
         self.river = river
         self.all_cards = []
+        self.player_number = player_number
 
     def map_card_values(self, card):
         values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13,
