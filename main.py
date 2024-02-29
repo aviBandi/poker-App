@@ -40,14 +40,25 @@ def computeWinner(*players):
             else:
                 print(winners[i], end=", ")
         print("with a", handNames[highestHand])
+    winners= []
     # Check for high card
     if highestHand == 1:
-        # NEED TO ADD THIS FUNCTIONALITY OF HIGH CARD
-        # DO SIMILAR TO PREVIOUS
-        pass
-
-
-
+        highestCard = 0
+        for player in winners:
+            if player.high_card() > highestCard:
+                highestCard = player.high_card()
+                winners = [player]
+            elif player.high_card() == highestCard:
+                winners.append(player)
+    if len(winners) == 1:
+        print("Player", winners[0].player_number, "wins with a high card of", highestCard)
+    else:
+        print("Tie between players", end=" ")
+        for i in range(len(winners)):
+            if i == len(winners) - 1:
+                print("and", winners[i], end=" ")
+            else:
+                print(winners[i], end=", ")
 
 
 
