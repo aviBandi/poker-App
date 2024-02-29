@@ -40,9 +40,10 @@ def computeWinner(*players):
             else:
                 print(winners[i], end=", ")
         print("with a", handNames[highestHand])
-    winners= []
+
     # Check for high card
     if highestHand == 1:
+        winners = []
         highestCard = 0
         for player in winners:
             if player.high_card() > highestCard:
@@ -50,21 +51,24 @@ def computeWinner(*players):
                 winners = [player]
             elif player.high_card() == highestCard:
                 winners.append(player)
-    if len(winners) == 1:
-        print("Player", winners[0].player_number, "wins with a high card of", highestCard)
-    else:
-        print("Tie between players", end=" ")
-        for i in range(len(winners)):
-            if i == len(winners) - 1:
-                print("and", winners[i], end=" ")
-            else:
-                print(winners[i], end=", ")
-
+        if len(winners) == 1:
+            print("Player", winners[0].player_number, "wins with a high card of", highestCard)
+        else:
+            print("Tie between players", end=" ")
+            for i in range(len(winners)):
+                if i == len(winners) - 1:
+                    print("and", winners[i], end=" ")
+                else:
+                    print(winners[i], end=", ")
+            print("with a high card of", highestCard)
 
 
 river_image = "river.jpg"
+river2_image = "river2.jpg"
 hand1_image = "hand1.jpg"
 hand2_image = "hand2.jpg"
+hand3_image = "hand3.jpg"
+hand4_image = "hand4.jpg"
 
 handNames = {8: "Four of a Kind",
              7: "Full House",
@@ -78,25 +82,39 @@ handNames = {8: "Four of a Kind",
 print("river cards")
 cardDetection.cardsFromImage(river_image)
 
-print("hand one cards")
-cardDetection.cardsFromImage(hand1_image)
+# print("hand one cards")
+# cardDetection.cardsFromImage(hand1_image)
+#
+# print("hand two cards")
+# cardDetection.cardsFromImage(hand2_image)
 
-print("hand two cards")
-cardDetection.cardsFromImage(hand2_image)
 
+# print("------------------------------")
+# print("Player one data")
+# player1 = computationClass.Computation(cardDetection.cardsFromImage(hand1_image), cardDetection.cardsFromImage(river_image), 1)
+# player1.cleanData()
+# print(handNames[player1.compute_hand()])
+# print("------------------------------")
+#
+# print("Player two data")
+# print("------------------------------")
+# player2 = computationClass.Computation(cardDetection.cardsFromImage(hand2_image), cardDetection.cardsFromImage(river_image), 1)
+# player2.cleanData()
+# print(handNames[player2.compute_hand()])
+# print("------------------------------")
 
+print("Player three data")
 print("------------------------------")
-print("Player one data")
-player1 = computationClass.Computation(cardDetection.cardsFromImage(hand1_image), cardDetection.cardsFromImage(river_image), 1)
-player1.cleanData()
-print(handNames[player1.compute_hand()])
+player3 = computationClass.Computation(cardDetection.cardsFromImage(hand3_image), cardDetection.cardsFromImage(river2_image), 3)
+player3.cleanData()
+print(handNames[player3.compute_hand()])
 print("------------------------------")
 
-print("Player two data")
+print("Player four data")
 print("------------------------------")
-player2 = computationClass.Computation(cardDetection.cardsFromImage(hand2_image), cardDetection.cardsFromImage(river_image), 1)
-player2.cleanData()
-print(handNames[player2.compute_hand()])
+player4 = computationClass.Computation(cardDetection.cardsFromImage(hand4_image), cardDetection.cardsFromImage(river2_image), 4)
+player4.cleanData()
+print(handNames[player4.compute_hand()])
 print("------------------------------")
 
-computeWinner(player1, player2)
+computeWinner(player3, player4)

@@ -16,10 +16,9 @@ classNames = ['10C', '10D', '10H', '10S',
 
 model = YOLO("playingCards.pt")
 
-
 def cardsFromImage(imageSource):
     hand = []
-    results = model(imageSource, show=False)
+    results = model(imageSource, show=True)
     for r in results:
         boxes = r.boxes
         for box in boxes:
