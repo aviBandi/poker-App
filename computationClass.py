@@ -90,16 +90,21 @@ class Computation:
     def check_pair(self):
         numList = [int(x[:-1]) for x in self.all_cards]
         for i in range(len(numList) - 1):
-            print("checking", numList[i])
+            # print("checking", numList[i])
             if numList.count(numList[i]) == 2:
-                print("pair found at", numList[i])
+                # print("pair found at", numList[i])
                 return True
         return False
 
     def high_card(self):
-        cardNums = [int(x[:-1]) for x in self.hand]
-        print("max card num in computation class", max(cardNums))
-        return max(cardNums)
+        print("------")
+        print(self.hand)
+        print(self.all_cards)
+        print("------")
+        # cardNums = [int(x[:-1]) for x in self.hand]
+        #
+        # print("max card num in computation class", max(cardNums))
+        # return max(cardNums)
 
     def compute_hand(self):
         # if check_straight_flush():
